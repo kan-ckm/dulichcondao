@@ -1,0 +1,203 @@
+/* Tổng thể */
+body,
+html {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e0f7fa; /* Màu nền nhẹ nhàng, giống màu biển */
+  color: #333; /* Màu chữ chủ đạo */
+}
+
+/* Header */
+header {
+  position: relative;
+  height: 700px; /* Chiều cao cho header */
+  overflow: hidden; /* Ẩn phần dư của ảnh */
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung */
+  align-items: center; /* Căn giữa theo trục dọc */
+  color: #e0f7fa;
+  text-align: center;
+  z-index: 1; /* Đảm bảo header nằm trên cùng */
+  background-size: cover; /* Đảm bảo ảnh hoặc GIF bao phủ toàn bộ */
+}
+
+.header-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: 100px; /* Đảm bảo GIF bao phủ toàn bộ khung hình */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Đưa GIF ra phía sau text */
+}
+
+/* Navigation */
+nav {
+  background-color: #009688; /* Màu nền của thanh điều hướng */
+  padding: 15px 0px;
+}
+
+nav ul {
+  list-style: none; /* Xóa ký tự đầu dòng của danh sách */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: left; /* Căn trái các mục trong thanh điều hướng */
+}
+
+nav ul li {
+  position: relative; /* Định vị tương đối để chứa submenu */
+  margin: 0 50px; /* Khoảng cách giữa các mục menu */
+}
+
+nav ul li a {
+  color: white; /* Màu chữ */
+  text-decoration: none; /* Xóa gạch chân */
+  padding: 10px 25px;
+  border-radius: 5px; /* Bo góc các mục menu */
+  background-color: #00796b; /* Màu nền cho các liên kết */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #004d40; /* Đổi màu nền khi hover */
+  transform: translateY(-5px); /* Đẩy lên khi hover */
+}
+
+/* Submenu */
+.submenu {
+  display: none; /* Ẩn submenu mặc định */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #00796b; /* Màu nền của submenu */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng cho submenu */
+  border-radius: 5px; /* Bo góc cho submenu */
+  z-index: 2; /* Đảm bảo submenu nằm trên các phần tử khác */
+}
+
+nav ul li:hover .submenu {
+  display: block; /* Hiển thị submenu khi di chuột qua mục chính */
+}
+
+.submenu li {
+  margin: 0;
+}
+
+.submenu li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px; /* Kích thước của các mục submenu */
+  white-space: nowrap; /* Đảm bảo văn bản không bị ngắt dòng */
+  display: block;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.submenu li a:hover {
+  background-color: #004d40; /* Đổi màu nền khi hover trên submenu */
+  transform: translateY(-3px); /* Đẩy lên khi hover */
+}
+
+/* Container chính */
+.container {
+  display: flex; /* Bố trí container với Flexbox */
+  margin: 50px;
+}
+
+.sidebar {
+  height: auto;
+  width: 200px;
+  background-color: #ffffff; /* Màu nền trắng cho sidebar */
+  padding: 20px;
+  border-radius: 10px; /* Bo góc cho sidebar */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng cho sidebar */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.sidebar:hover {
+  transform: translateY(-3px); /* Đẩy lên khi hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item {
+  display: flex; /* Sử dụng flex để căn chỉnh icon và text */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  padding: 10px;
+  border-radius: 5px; /* Bo góc cho các mục menu */
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.icon {
+  margin-right: 15px; /* Khoảng cách giữa biểu tượng và văn bản */
+  font-size: 10px; /* Kích thước của biểu tượng */
+  transition: transform 0.3s, color 0.3s; /* Hiệu ứng khi hover */
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:hover .icon {
+  transform: scale(1.2); /* Tăng kích thước icon khi hover */
+  color: #ffd700; /* Đổi màu icon khi hover */
+}
+
+.styled-iframe:hover {
+  transform: translateY(-5px); /* Đẩy lên khi hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.styled-iframe {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* Bo góc cho iframe */
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.styled-iframe iframe::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn */
+}
+
+.styled-iframe iframe {
+  width: 100%;
+  height: 1200px;
+  border: none;
+  scrollbar-width: none; /* Chỉ Firefox */
+  -ms-overflow-style: none; /* Chỉ Internet Explorer */
+}
+
+.content-box {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* Bo góc cho các hộp nội dung */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.content-box:hover {
+  transform: translateY(-5px); /* Đẩy lên khi hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  background-color: #00796b;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  border-radius: 0px 0px 10px 10px; /* Bo góc phần trên của footer */
+}
+
+footer:hover {
+  transform: translateY(-5px);
+}

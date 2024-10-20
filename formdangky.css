@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Reem+Kufi+Fun:wght@500&display=swap");
+/* Import font từ Google Fonts để sử dụng font Poppins và Reem Kufi Fun cho toàn bộ văn bản trên trang */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Reem Kufi Fun", sans-serif;
+}
+/* 
+- Xóa tất cả khoảng cách bên ngoài (margin) và bên trong (padding) cho mọi phần tử.
+- Sử dụng box-sizing: border-box để bao gồm cả padding và border vào trong kích thước tổng thể của phần tử.
+- Thiết lập font mặc định cho toàn trang với font "Reem Kufi Fun".
+*/
+
+:root {
+  --primaryColor: black;
+  --secondColor: #d6d6d6;
+}
+/* 
+- Định nghĩa biến CSS dùng để lưu màu sắc chính và màu nền phụ, giúp việc thay đổi màu sắc dễ dàng hơn.
+- `--primaryColor` lưu màu chính là đen (black).
+- `--secondColor` lưu màu nền phụ là màu xám nhạt (#d6d6d6).
+*/
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+/* 
+- Căn giữa nội dung của trang web cả theo chiều ngang và chiều dọc.
+- `min-height: 100vh` đảm bảo chiều cao tối thiểu là 100% chiều cao màn hình.
+- Màu nền của body là màu xám nhạt và màu chữ là màu đen.
+*/
+
+.box {
+  position: relative;
+  width: 380px;
+  height: 420px;
+  background: var(--secondColor);
+  transition: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.192);
+  border-radius: 8px;
+  overflow: hidden;
+}
+/* 
+- `position: relative` để tạo mối quan hệ vị trí với các phần tử con (before, after).
+- Thiết lập kích thước của hộp chứa form đăng nhập/đăng ký.
+- `background: var(--secondColor)` thiết lập màu nền hộp là màu xám nhạt.
+- `transition` tạo hiệu ứng chuyển mượt khi thay đổi kích thước.
+- `box-shadow` tạo hiệu ứng đổ bóng cho hộp.
+- `border-radius: 8px` làm bo tròn các góc của hộp.
+- `overflow: hidden` ẩn các phần tử con vượt ra ngoài hộp.
+*/
+
+.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 420px;
+  background: linear-gradient(0deg, transparent, #097e8d, #02184d);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+}
+/* 
+- `::before` và `::after` là các phần tử giả để tạo hiệu ứng ánh sáng chuyển động quanh hộp.
+- `position: absolute` định vị trước và sau so với hộp `.box`.
+- `top` và `left` di chuyển các phần tử này ra ngoài khỏi hộp.
+- `background: linear-gradient` tạo một hiệu ứng gradient với sự chuyển tiếp từ trong suốt sang màu đen.
+- `transform-origin: bottom right` xác định điểm xoay của gradient là từ góc dưới bên phải.
+- `animation: animate` áp dụng hiệu ứng xoay 360 độ liên tục trong 6 giây.
+*/
+
+.box::after {
+  animation-delay: -3s;
+}
+/* Đặt độ trễ cho phần tử `::after` để hiệu ứng xoay của nó bắt đầu chậm hơn 3 giây so với `::before`, tạo cảm giác ánh sáng chuyển động quanh hộp. */
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* 
+- Tạo hoạt ảnh xoay cho gradient từ góc 0 độ đến 360 độ, tạo hiệu ứng xoay tròn quanh hộp.
+- `0%` là trạng thái ban đầu và `100%` là khi kết thúc.
+*/
+
+.form {
+  position: absolute;
+  inset: 2px;
+  border-radius: 8px;
+  background: #7cf2ec;
+  z-index: 10;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+}
+/* 
+- `position: absolute` đặt form bên trong hộp `.box`.
+- `inset: 2px` giúp form nằm cách đều các cạnh của hộp 2px.
+- `border-radius` bo tròn các góc của form.
+- `background: #ffffff` thiết lập màu nền trắng cho form.
+- `z-index: 10` đảm bảo form hiển thị trên các phần tử `::before` và `::after`.
+- `padding` tạo khoảng cách bên trong form.
+- `display: flex` và `flex-direction: column` sắp xếp các phần tử con theo chiều dọc.
+*/
+
+.form h2 {
+  color: var(--primaryColor);
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+/* Định dạng tiêu đề của form với màu chữ đen, căn giữa, và khoảng cách giữa các ký tự. */
+
+.inputBox {
+  position: relative;
+  width: 300px;
+  margin-top: 35px;
+}
+/* 
+- `position: relative` giúp định vị các phần tử con bên trong `.inputBox`.
+- Thiết lập kích thước chiều rộng của khung input.
+- `margin-top` tạo khoảng cách phía trên mỗi `.inputBox`.
+*/
+
+.inputBox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 1em;
+  letter-spacing: 0.5em;
+  z-index: 10;
+}
+/* 
+- Định dạng cho trường nhập liệu, không có đường viền và nền trong suốt.
+- `color` thiết lập màu chữ trắng.
+- `letter-spacing` tăng khoảng cách giữa các ký tự.
+- `z-index: 10` giúp phần tử này nằm trên các phần tử khác của `.inputBox`.
+*/
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 0px 10px;
+  font-size: 1em;
+  color: #8f8f8f;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+}
+/* 
+- Định dạng cho nhãn hiển thị trong input, được căn trái.
+- `pointer-events: none` giúp nhãn không ảnh hưởng khi người dùng click.
+- `transition` giúp nhãn di chuyển mượt mà khi input được focus hoặc có giá trị.
+*/
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  color: var(--primaryColor);
+  transform: translateX(0px) translateY(-34px);
+  font-size: 0.75em;
+}
+/* 
+- Khi input được nhập liệu hoặc đang được focus, nhãn sẽ di chuyển lên phía trên.
+- `~` là bộ chọn cho phần tử kế tiếp. 
+- `transform` thay đổi vị trí của nhãn.
+- `color` thay đổi màu sắc của nhãn.
+*/
+
+.inputBox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primaryColor);
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+}
+/* 
+- Tạo thanh gạch chân dưới input với màu đen.
+- `transition` giúp hiệu ứng mở rộng thanh mượt mà khi input được focus hoặc có giá trị.
+*/
+
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i {
+  height: 44px;
+}
+/* Khi input được focus hoặc có giá trị hợp lệ, thanh gạch chân mở rộng lên 44px, tạo hiệu ứng nổi bật. */
+
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+/* Định dạng phần chứa các liên kết như "Forget Password", sắp xếp các liên kết cách đều nhau. */
+
+.links a {
+  margin: 10px 0;
+  font-size: 0.75em;
+  color: #8f8f8f;
+  text-decoration: none;
+}
+/* Định dạng cho các liên kết với màu xám và không có gạch chân. */
+
+.links a:hover,
+.links a:nth-child(2) {
+  color: var(--primaryColor);
+}
+/* Đổi màu các liên kết khi hover và thiết lập màu cho liên kết thứ hai. */
+
+input[type="submit"] {
+  border: none;
+  outline: none;
+  background: var(--primaryColor);
+  color: white;
+  padding: 10px 25px;
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+/* Định dạng cho nút submit với màu nền đen, chữ trắng, và các góc được bo tròn. */
+
+input[type="submit"]:active {
+  opacity: 0.8;
+}
+/* Giảm độ trong suốt của nút submit khi được nhấn, tạo hiệu ứng nhấn. */
+
+#signIn,
+#signUp,
+#forgetPassword {
+  position: absolute;
+  top: 45px;
+  transition: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+/* 
+- Đặt vị trí các form `#signIn`, `#signUp`, và `#forgetPassword` nằm ở trên cùng với hiệu ứng chuyển động.
+- `cubic-bezier` giúp hiệu ứng mượt mà hơn.
+*/
+
+#signUp {
+  top: 450px; /* Đặt form đăng ký ra ngoài vùng hiển thị */
+}
+
+#forgetPassword {
+  top: -450px; /* Đặt form quên mật khẩu ra ngoài vùng hiển thị */
+}
+/* Dùng JavaScript để thay đổi vị trí của các form, hiển thị form tương ứng. */

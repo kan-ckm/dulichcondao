@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="formdangky.css" />
+    <title>Form đăng ký</title>
+  </head>
+  <body>
+    <div class="box" id="box">
+      <div class="form">
+        <form action="" id="signIn">
+          <h2>Đăng nhập</h2>
+          <div class="inputBox">
+            <input type="text" id="loginUsername" required="required" />
+            <span>Họ tên</span>
+            <i></i>
+          </div>
+          <div class="inputBox">
+            <input type="password" id="loginPassword" required="required" />
+            <span>Mật khẩu</span>
+            <i></i>
+          </div>
+          <div class="links">
+            <a href="#" onclick="forgetPassword()">Quên mật khẩu</a>
+            <a href="#" onclick="signUp()">Đăng ký</a>
+          </div>
+          <input type="submit" value="Đăng nhập" />
+        </form>
+
+        <form action="" id="forgetPassword">
+          <h2>Quên mật khẩu</h2>
+          <div class="inputBox">
+            <input type="text" id="forgotUsername" required="required" />
+            <span>Họ tên</span>
+            <i></i>
+          </div>
+          <div class="links">
+            <a href="#" onclick="signIn()">Đăng nhập</a>
+            <a href="#" onclick="signUp()">Đăng ký</a>
+          </div>
+          <input type="submit" value="Gửi" />
+        </form>
+
+        <form action="" id="signUp">
+          <h2>Đăng ký</h2>
+          <div class="inputBox">
+            <input type="text" id="registerUsername" required="required" />
+            <span>Họ tên</span>
+            <i></i>
+          </div>
+          <div class="inputBox">
+            <input type="text" id="registerEmail" required="required" />
+            <span>Email</span>
+            <i></i>
+          </div>
+          <div class="inputBox">
+            <input type="password" id="registerPassword" required="required" />
+            <span>Mật khẩu</span>
+            <i></i>
+          </div>
+          <div class="inputBox">
+            <input
+              type="password"
+              id="confirmRegisterPassword"
+              required="required"
+            />
+            <span>Nhập lại mật khẩu</span>
+            <i></i>
+          </div>
+          <div class="links">
+            <a href="#" onclick="forgetPassword()">Quên mật khẩu</a>
+            <a href="#" onclick="signIn()">Đăng nhập</a>
+          </div>
+          <input
+            type="submit"
+            value="Đăng ký"
+            onclick="validateSignUp(event)"
+          />
+          <small id="registerError" style="color: red; display: none"></small>
+        </form>
+      </div>
+    </div>
+    <script src="dangky.js"></script>
+  </body>
+</html>
